@@ -21,7 +21,7 @@ app.frame('/', (c) => {
   const { buttonValue, inputText, status } = c
   const fruit = inputText || buttonValue
   return c.res({
-    image: `https://frame-ai-livepeer.vercel.app/background.png`,
+    image: `https://frog-frame-coral.vercel.app/background.png`,
     imageAspectRatio:'1:1',
     intents: [<Button value="">Let's Start</Button>]  
   })
