@@ -32,18 +32,7 @@ app.frame('/prompt', (c) => {
  
   return c.res({
     action:'/mint',
-    image:(
-      <div
-        style={
-          {
-            color:"white",
-            fontSize:"60px"
-          }
-        }
-       >
-        This
-      </div>
-    ),
+    image: `https://frog-frame-coral.vercel.app/background.png`,
     imageAspectRatio:'1.91:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
