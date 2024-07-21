@@ -46,7 +46,7 @@ app.frame('/prompt', (c) => {
  
   return c.res({
     action:'/inspect',
-    image:"",
+    image:``,
     imageAspectRatio:'1:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
