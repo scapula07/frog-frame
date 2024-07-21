@@ -43,8 +43,8 @@ app.frame('/prompt', (c) => {
     image:"/background3.jpeg",
     imageAspectRatio:'1.91:1',
     intents: [
-      <TextInput placeholder="A cool cat on the beach..." />,
-      // <Button value="">Generate</Button>
+      // <TextInput placeholder="A cool cat on the beach..." />,
+      <Button value="">Generate</Button>
       ]  
   })
 })
