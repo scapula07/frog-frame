@@ -32,7 +32,7 @@ app.frame('/prompt', (c) => {
  
   return c.res({
     action:'/mint',
-    image: `https://frog-frame-coral.vercel.app/background.png`,
+    image: `https://frog-frame-coral.vercel.app/background3.jpeg`,
     imageAspectRatio:'1.91:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
@@ -46,7 +46,6 @@ app.frame('/mint', async(c) => {
   const api= new SDAPI()
   const result = await api.txt2img(c?.frameData?.inputText || "");
   return c.res({
-    action:'/prompt',
     image: result?.outputs[0]?.url,
     imageAspectRatio:'1:1',
     intents: [
