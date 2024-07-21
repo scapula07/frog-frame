@@ -264,11 +264,6 @@ export const abi= [
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
 				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
@@ -572,4 +567,4 @@ export const abi= [
 		"stateMutability": "view",
 		"type": "function"
 	}
-]
+] as const

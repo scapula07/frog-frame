@@ -9,11 +9,17 @@ import { SDAPI } from '@/app/lib'
 import { Txt2imgInput } from '@/app/lib/type'
 import {abi} from "../../lib/abi"
 
+const getRandomInt=(min, max) =>{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const app = new Frog({
   title:"frame",
   assetsPath: '/',
   basePath: '/api',
-
+  initialState: {
+    uri:""
+  }
 })
 
 
@@ -45,10 +51,15 @@ app.frame('/prompt', (c) => {
 
 
 app.frame('/inspect', async(c) => {
+  const { inputText, deriveState } = c
   const api= new SDAPI()
-  const result = await api.txt2img(c?.frameData?.inputText || "");
+  const result = await api.txt2img(inputText || "");
+  const state = deriveState(previousState => {
+     previousState.uri=result?.outputs[0]?.url
+  })
+ 
   return c.res({
-    action:'/prompt',
+    action:'/finish',
     image: result?.outputs[0]?.url,
     imageAspectRatio:'1.91:1',
     intents: [
@@ -59,18 +70,19 @@ app.frame('/inspect', async(c) => {
 })
 
 
+app.transaction('/mint', (c) => {
+  const {  previousState } = c
 
-// app.transaction('/mint', (c) => {
- 
-//   return c.contract({
-//     abi,
-//     functionName:'safeMint',
-//     args: ["",""],
-//     chainId: 'eip155:10',
-//     to: '0xE6beF6641BF4b346B6dfa1e4E37f83FfeAe383e7',
-//   })
-
-// })
+  const tokenId= getRandomInt(1, 1000);
+  return c.contract({
+    abi,
+    functionName: 'safeMint',
+    args: [tokenId,previousState?.uri],
+    chainId: 'eip155:421614',
+    to: '0xc707E384871fF5c253dECe60DbaDDd6812f2bE8e',
+   })
+  
+})
 
 
 app.frame('/finish', (c) => {
