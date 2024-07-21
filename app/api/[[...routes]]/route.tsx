@@ -32,10 +32,10 @@ app.frame('/prompt', (c) => {
  
   return c.res({
     action:'/inspect',
-    image: `https://frog-frame-coral.vercel.app/background.png`,
-    imageAspectRatio:'1.91:1',
+    image:`https://frog-frame-coral.vercel.app/background.png`,
+    imageAspectRatio:'1:1',
     intents: [
-      <TextInput placeholder="A cool cat on the beach..." />,
+      // <TextInput placeholder="A cool cat on the beach..." />,
       <Button value="">Generate</Button>
       ]  
   })
