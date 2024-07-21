@@ -8,26 +8,13 @@ import { createSystem } from 'frog/ui'
 import { SDAPI } from '@/app/lib'
 import { Txt2imgInput } from '@/app/lib/type'
 
-export const {
-  Box,
-  Columns,
-  Column,
-  Heading,
-  HStack,
-  Rows,
-  Row,
-  Spacer,
-  Text,
-  VStack,
-  vars,
-} = createSystem()
 
 
 const app = new Frog({
   title:"frame",
   assetsPath: '/',
   basePath: '/api',
-  ui: { vars }
+
 })
 
 
