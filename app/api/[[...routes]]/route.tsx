@@ -8,12 +8,26 @@ import { createSystem } from 'frog/ui'
 import { SDAPI } from '@/app/lib'
 import { Txt2imgInput } from '@/app/lib/type'
 
+export const {
+  Box,
+  Columns,
+  Column,
+  Heading,
+  HStack,
+  Rows,
+  Row,
+  Spacer,
+  Text,
+  VStack,
+  vars,
+} = createSystem()
 
 
 const app = new Frog({
   title:"frame",
   assetsPath: '/',
   basePath: '/api',
+  ui: { vars }
 })
 
 
@@ -32,7 +46,10 @@ app.frame('/prompt', (c) => {
  
   return c.res({
     action:'/inspect',
-    image:`https://frog-frame-coral.vercel.app/background.png`,
+    image:(
+      <Box></Box>
+      
+    ),
     imageAspectRatio:'1:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
