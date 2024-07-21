@@ -35,7 +35,7 @@ app.frame('/prompt', (c) => {
     image:`https://frog-frame-coral.vercel.app/background.png`,
     imageAspectRatio:'1:1',
     intents: [
-      // <TextInput placeholder="A cool cat on the beach..." />,
+      <TextInput placeholder="A cool cat on the beach..." />,
       <Button value="">Generate</Button>
       ]  
   })
@@ -62,6 +62,16 @@ app.frame('/inspect', async(c) => {
 //   return c.contract({
 //   })
 // })
+
+
+app.frame('/finish', (c) => {
+  return c.res({
+    action:'/prompt',
+    image: `https://frog-frame-coral.vercel.app/background2.png`,
+    imageAspectRatio:'1:1',
+    intents: [<Button value="">Share</Button>]  
+  })
+})
 
 devtools(app, { serveStatic })
 
