@@ -37,12 +37,10 @@ app.frame('/', (c) => {
 
 
 app.frame('/prompt', (c) => {
-  const imageUrl = `/background.png`;
-  console.log(`Image URL: ${imageUrl}`); // Log the image URL for debugging
-
+ 
   return c.res({
     action:'/inspect',
-    image: imageUrl,
+    image:"/background3.jpeg",
     imageAspectRatio:'1.91:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
