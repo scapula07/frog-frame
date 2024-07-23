@@ -37,18 +37,16 @@ app.frame('/', (c) => {
 
 
 app.frame('/prompt', (c) => {
-  const imageUrl = `/background.png`;
-  console.log(`Image URL: ${imageUrl}`); // Log the image URL for debugging
-
+  const imageUrl = `https://frog-frame-coral.vercel.app/background3.jpeg`;
   return c.res({
     action:'/inspect',
     image: imageUrl,
     imageAspectRatio:'1.91:1',
     intents: [
       <TextInput placeholder="A cool cat on the beach..." />,
-      <Button value="">Generate</Button>
+      <Button.Link >Generate</Button.Link>
       ]  
-  })
+   })
 })
 
 
@@ -88,13 +86,28 @@ app.transaction('/mint', (c) => {
 
 
 app.frame('/finish', (c) => {
+    
   return c.res({
-    action:'/prompt',
+    action:'/share',
     image: `/background2.png`,
     imageAspectRatio:'1:1',
     intents: [<Button value="">Share</Button>]  
   })
 })
+
+app.frame('/share', (c) => {
+  const {  previousState } = c
+  return c.res({
+    image:previousState?.uri,
+    imageAspectRatio:'1:1',
+    intents: [
+    <Button.Link href={`https://twitter.com/intent/tweet?url=${previousState?.uri}`}>x.com</Button.Link>,
+    <Button.Link href={`https://warpcast.com/~/compose?embeds[]=${previousState?.uri}`}>Recast</Button.Link>,
+    <Button value="">Discord</Button>
+  ]  
+  })
+})
+
 
 devtools(app, { serveStatic })
 
